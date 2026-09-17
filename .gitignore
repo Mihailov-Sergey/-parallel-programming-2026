@@ -1,0 +1,12 @@
+*.sln
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+.vs/
+x64/
+Debug/
+Release/
+*.exe
+matrixA.txt
+matrixB.txt
+resultC.txt
