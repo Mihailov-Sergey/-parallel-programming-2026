@@ -24,7 +24,7 @@ cl /std:c++latest /EHsc /O2 GenerateMatrix.cpp main.cpp /Fe:matrix_app.exe
 matrix_app.exe
 ```
 
-**Через GCC (g++ в Linux / MinGW):**
+**Через GCC (g++ в Linux):**
 ```bash
 g++ -std=c++23 -fmodules-ts -O3 -c GenerateMatrix.cpp
 g++ -std=c++23 -fmodules-ts -O3 GenerateMatrix.o main.cpp -o matrix_app
