@@ -1,4 +1,4 @@
-*.sln
+*.slnx
 *.vcxproj
 *.vcxproj.user
 *.vcxproj.filters
