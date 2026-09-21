@@ -13,6 +13,19 @@
 - `verif.py` — Python-скрипт для проверки вычислений.
 - `requirements.txt` — список зависимостей для Python-окружения.
 
+## Алгоритм
+```cpp
+auto start_time = std::chrono::steady_clock::now();
+for (int i = 0; i < n; ++i) {
+	for (int k = 0; k < n; ++k) {
+		double a = A[i][k];
+		for (int j = 0; j < n; ++j) {
+			C[i][j] += a * B[k][j];
+		}
+	}
+}
+auto end_time = std::chrono::steady_clock::now();
+```
 ## Результаты
 
 | Размерность (N x N) | Память (МБ) | Число операций (FLOP) | Время выполнения (сек) | Производительность (GFLOPS) |
