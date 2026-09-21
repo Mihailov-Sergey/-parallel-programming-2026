@@ -66,6 +66,7 @@ auto end_time = std::chrono::steady_clock::now();
 | **100 x 100** | 0.23 | 2 000 000 | 0.0138 | 0.1461 |
 
 ```mermaid
+%%{init: {'theme': 'dark'}}%%
 xychart-beta
     title "Время выполнения от размера матрицы (Среднее)"
     x-axis [100x100, 200x200, 400x400, 600x600, 800x800, 1000x1000]
@@ -74,6 +75,7 @@ xychart-beta
 ```
 
 ```mermaid
+%%{init: {'theme': 'dark'}}%%
 xychart-beta
     title "Производительность алгоритма (Среднее)"
     x-axis [100x100, 200x200, 400x400, 600x600, 800x800, 1000x1000]
