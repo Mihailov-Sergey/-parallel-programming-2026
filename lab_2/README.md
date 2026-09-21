@@ -54,16 +54,39 @@
 ### Зависимость скорости (GFLOPS) от числа потоков
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'xyChart': {
+      'plotColorPalette': '#FF3366, #FF9933, #FFFF33, #33CC66, #3399FF, #9933FF',
+      'backgroundColor': '#161b22',
+      'titleColor': '#ffffff',
+      'xAxisLabelColor': '#8b949e',
+      'yAxisLabelColor': '#8b949e',
+      'xAxisTitleColor': '#ffffff',
+      'yAxisTitleColor': '#ffffff',
+      'xAxisLineColor': '#30363d',
+      'yAxisLineColor': '#30363d'
+    }
+  }
+}}%%
 xychart-beta
-    title "Performance vs Threads (Large Matrices)"
+    title "Performance vs Threads"
     x-axis [1-Thread, 2-Threads, 4-Threads, 8-Threads, 16-Threads]
-    y-axis "Speed (GFLOPS)" 0.100 --> 0.600
+    y-axis "Speed (GFLOPS)" 0.050 --> 0.600
+    line [0.0952, 0.1399, 0.2390, 0.2134, 0.1955]
+    line [0.1071, 0.2206, 0.2735, 0.3052, 0.4141]
+    line [0.1384, 0.2297, 0.3802, 0.4393, 0.4413]
+    line [0.1389, 0.2395, 0.3539, 0.4195, 0.4813]
     line [0.1515, 0.2416, 0.3679, 0.4215, 0.5242]
     line [0.1538, 0.2486, 0.3448, 0.4390, 0.5112]
 ```
-* **Синяя линия (верхняя в конце):** Матрица 1200 x 1200
-* **Зеленая линия (нижняя в конце):** Матрица 1600 x 1600
+* **Красная линия:** Матрица 100 x 100 *(на 16 потоках падает вниз)*
+* **Оранжевая линия:** Матрица 200 x 200
+* **Желтая линия:** Матрица 400 x 400
+* **Зеленая линия:** Матрица 800 x 800
+* **Голубая линия:** Матрица 1200 x 1200 *(самая верхняя точка в конце)*
+* **Фиолетовая линия:** Матрица 1600 x 1600
 
 ## Выводы
 
