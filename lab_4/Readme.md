@@ -11,6 +11,36 @@
 3. Конвертация формата строк скрипта (`sed -i 's/\r$//' cuda_job.sh`) и настройка параметров Slurm (`#SBATCH --partition=batch`, `#SBATCH --gres=gpu:tesla:1`, `module load cuda/8.0`).
 4. Постановка задачи в очередь (`sbatch cuda_job.sh`) и мониторинг выполнения (`squeue -u $USER`).
 
+```bash
+# 1. Диагностика очередей и доступных модулей
+# Выяснилось, что очередь spd (узлы g142-146) не содержит GPU и изолирована от /home,
+# а реальные видеокарты находятся в общей очереди batch на узлах n243 и n250 (gres=gpu:tesla:2).
+sinfo -o "%12P %10a %6D %15G %N"
+module avail
+
+# 2. Исправление скрипта задачи cuda_job.sh:
+# - удаление Windows-переносов строк (\(\r\\)n)
+# - замена несуществующей очереди gpu на batch
+# - указание точного типа ресурса --gres=gpu:tesla:1
+# - подключение точного имени модуля cuda/8.0
+# - удаление неподдерживаемого старым драйвером поля compute_cap из nvidia-smi
+sed -i 's\(/\r\)\$//' cuda_job.sh
+sed -i 's/--partition=.*/--partition=batch/' cuda_job.sh
+sed -i 's/.*--gres=.*/#SBATCH --gres=gpu:tesla:1/' cuda_job.sh
+sed -i 's/module load cuda.*/module load cuda\/8.0/' cuda_job.sh
+sed -i 's/,compute_cap//' cuda_job.sh
+
+# 3. Очистка старых логов, постановка в очередь и контроль выполнения
+rm -f cuda_errors.err cuda_report.txt
+sbatch cuda_job.sh
+squeue -u \$USER
+
+# 4. Проверка итогового отчёта и предупреждений компилятора
+# (в cuda_errors.err зафиксировано только штатное предупреждение nvcc об устаревании sm_20)
+cat cuda_report.txt
+cat cuda_errors.err
+```
+
 ## 3. Результаты экспериментов
 
 | Размер (N) | Блок (B×B) | Сетка (G×G) | Время (сек) | GFLOPS |
