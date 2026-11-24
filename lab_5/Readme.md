@@ -1,4 +1,4 @@
-## Program 3: Генерация фрактала Мандельброта на ISPC
+## Lab_5 (Program 3: Генерация фрактала Мандельброта на ISPC)
 
 ### Изменения в коде (`prog3_mandelbrot_ispc/mandelbrot.ispc`)
 
