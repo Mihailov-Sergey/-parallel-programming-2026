@@ -1,0 +1,5 @@
+[mandelbrot serial]:            [258.412] ms
+[mandelbrot ispc]:              [49.695] ms
+[mandelbrot multicore ispc]:    [29.104] ms
+                                (5.20x speedup from ISPC)
+                                (8.88x speedup from task ISPC)
